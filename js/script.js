@@ -122,9 +122,9 @@ function randomBackgroundColor() {
 }
 
 /**
- * setInterval function will refresh the page every 10 seconds with a new quote
+ * setInterval method will refresh the page every 10 seconds with a new quote
  */
-setInterval(function(){printQuote()}, 10000);
+setInterval( () => {printQuote()}, 10000);
 
 // /***
 //  * click event listener for the print quote button
