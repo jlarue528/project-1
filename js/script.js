@@ -11,7 +11,7 @@ project 1 - A Random Quote Generator
  * `quotes` array 
 ***/
 
-const quoteArray = [
+const quotes = [
   {
     quote: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
     author: "James Cameron",
@@ -45,32 +45,32 @@ const quoteArray = [
 /**
  * Using a for loop to name each object's key value pairs within the array 
  */
-for(let i = 0; i < quoteArray.length; i++) {
-  let famousQuote = quoteArray[i].quote;
-  let famousAuthor = quoteArray[i].author;
-  let year = quoteArray[i].year;
-  let citation = quoteArray[i].citation;
-  const quoteObject = {};
+// for(let i = 0; i < quoteArray.length; i++) {
+//   let famousQuote = quoteArray[i].quote;
+//   let famousAuthor = quoteArray[i].author;
+//   let year = quoteArray[i].year;
+//   let citation = quoteArray[i].citation;
+//   const quoteObject = {};
 
-    if (Object.keys(quoteArray[i]).includes('year')) {
-      quoteObject = {
-        quote: famousQuote,
-        author: famousAuthor,
-        year: year
-      }
-    } else if(Object.keys(quoteArray[i]).includes('citation')) {
-      quoteObject = {
-        quote: famousQuote,
-        author: famousAuthor,
-        citation: citation
-      }
-    } else {
-      quoteObject = {
-        quote: famousQuote,
-        author: famousAuthor
-      }
-    }
-};
+//     if (Object.keys(quoteArray[i]).includes('year')) {
+//       quoteObject = {
+//         quote: famousQuote,
+//         author: famousAuthor,
+//         year: year
+//       }
+//     } else if(Object.keys(quoteArray[i]).includes('citation')) {
+//       quoteObject = {
+//         quote: famousQuote,
+//         author: famousAuthor,
+//         citation: citation
+//       }
+//     } else {
+//       quoteObject = {
+//         quote: famousQuote,
+//         author: famousAuthor
+//       }
+//     }
+// };
 
 
 // /***
@@ -78,11 +78,11 @@ for(let i = 0; i < quoteArray.length; i++) {
 // ***/
 //should randomly select quote from the quotes array and return it
 function getRandomQuote() {
-  const randomNumber = Math.floor(Math.random() * quoteArray.length);
+  const randomNumber = Math.floor(Math.random() * quotes.length);
   const randomQuote = {
-    quote: quoteArray[randomNumber]
+    quote: quotes[randomNumber]
   }
-  return randomQuote['quote'];
+  return randomQuote.quote;
     // return quoteObject[randomNumber];
   }
 
@@ -114,7 +114,7 @@ function printQuote() {
 
   return document.getElementById('quote-box').innerHTML = randomQuote; 
 };
-printQuote(quoteArray);
+printQuote();
 
 
 
