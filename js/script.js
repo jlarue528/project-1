@@ -52,14 +52,13 @@ function getRandomQuote() {
     quote: quotes[randomNumber]
   }
   return randomQuote.quote;
-    // return quoteObject[randomNumber];
-  }
+}
 
 
 
-// // /***
-// //  * `printQuote` function
-// // ***/
+// /***
+//  * `printQuote` function
+// ***/
 //call the getRandomQuote function and then print the quote to the page using the template provided in the project instructions
 
 function printQuote() {
@@ -68,7 +67,6 @@ function printQuote() {
     <p class="quote"> ${randomQuoteObject.quote} </p>
     <p class="source"> ${randomQuoteObject.author}
   `;
-  console.log(randomQuoteObject);
 
   if(Object.keys(randomQuoteObject).includes('citation')) {
     randomQuote += `
