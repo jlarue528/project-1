@@ -18,7 +18,8 @@ const quotes = [
   {
     quote: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
     author: "James Cameron",
-    citation: "The Mind of James Cameron"
+    citation: "The Mind of James Cameron",
+    purpose: 'Motivation'
   },
   {
     quote: "Insanity: doing the same thing over and over again and expecting different results.",
@@ -26,7 +27,8 @@ const quotes = [
   },
   {
     quote: "The greatest wealth is to live content with little." ,
-    author:  "Plato" 
+    author:  "Plato",
+    tag: 'Minimalist' 
   },
   {
     quote: "The future belongs to those who prepare for it today.",
@@ -70,8 +72,8 @@ function printQuote() {
     * * @type {string}
   */
   let randomQuote = `
-    <p class="quote"> ${randomQuoteObject.quote} </p>
-    <p class="source"> ${randomQuoteObject.author}
+    <p class= "quote"> ${randomQuoteObject.quote} </p>
+    <p class= "source"> ${randomQuoteObject.author}
   `;
   /*
     * if statements list additions to HTML string if the quote objects include citation or year
@@ -85,11 +87,44 @@ function printQuote() {
       <span class="year"> ${randomQuoteObject.year} </span>
     ` 
   }
+
+  if(Object.keys(randomQuoteObject).includes('purpose')) {
+    randomQuote += `
+      <span class="citation"> ${randomQuoteObject.purpose} </span>
+    `
+  } if (Object.keys(randomQuoteObject).includes('tag')) {
+    randomQuote += `
+      <span class="year"> ${randomQuoteObject.tag} </span>
+    ` 
+  }
   randomQuote += `</p>`
 
-  return document.getElementById('quote-box').innerHTML = randomQuote; 
+  document.getElementById('quote-box').innerHTML = randomQuote;
+  
+  /**
+    * when the randomBackgroundColor function is called a randomized background color is generated to accompany the random quote
+   */
+  randomBackgroundColor();
 };
 printQuote();
+
+/**
+ * getRandomBackgroundColor function randomly selects a color for a page's background
+ 	* @returns {string} which contains the HTML required to return the new background color and post it to the page
+ */
+function randomBackgroundColor() {
+  let x = Math.floor(Math.random() * 256);
+  let y = Math.floor(Math.random() * 256);
+  let z = Math.floor(Math.random() * 256);
+  let backgroundColor = "rgb(" + x + "," + y + "," + z + ")";
+
+  return document.body.style.background = backgroundColor;
+}
+
+/**
+ * setInterval function will refresh the page every 10 seconds with a new quote
+ */
+setInterval(function(){printQuote()}, 10000);
 
 // /***
 //  * click event listener for the print quote button
