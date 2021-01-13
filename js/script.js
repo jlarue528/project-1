@@ -50,7 +50,7 @@ for(let i = 0; i < quoteArray.length; i++) {
   let famousAuthor = quoteArray[i].author;
   let year = quoteArray[i].year;
   let citation = quoteArray[i].citation;
-  let quoteObject = {};
+  const quoteObject = {};
 
     if (Object.keys(quoteArray[i]).includes('year')) {
       quoteObject = {
@@ -77,14 +77,15 @@ for(let i = 0; i < quoteArray.length; i++) {
 //  * `getRandomQuote` function
 // ***/
 //should randomly select quote from the quotes array and return it
-function getRandomQuote(arr) {
-  const randomNumber = Math.floor(Math.random() * arr.length);
+function getRandomQuote() {
+  const randomNumber = Math.floor(Math.random() * quoteArray.length);
   const randomQuote = {
-    quote: arr[randomNumber]
+    quote: quoteArray[randomNumber]
   }
   return randomQuote['quote'];
-}
-console.log(getRandomQuote(quoteArray));
+    // return quoteObject[randomNumber];
+  }
+
 
 
 // // /***
@@ -92,9 +93,8 @@ console.log(getRandomQuote(quoteArray));
 // // ***/
 //call the getRandomQuote function and then print the quote to the page using the template provided in the project instructions
 
-function printQuote(arr) {
-  const randomQuoteObject = getRandomQuote(arr);
-  console.log(randomQuoteObject);
+function printQuote() {
+  const randomQuoteObject = getRandomQuote();
   let randomQuote = `
     <p class="quote"> ${randomQuoteObject.quote} </p>
     <p class="source"> ${randomQuoteObject.author}
@@ -105,15 +105,10 @@ function printQuote(arr) {
     randomQuote += `
       <span class="citation"> ${randomQuoteObject.citation} </span>
     `
-  } else if (Object.keys(randomQuoteObject).includes('year')) {
+  } if (Object.keys(randomQuoteObject).includes('year')) {
     randomQuote += `
       <span class="year"> ${randomQuoteObject.year} </span>
     ` 
-  } else {
-    randomQuote = `
-      <p class="quote"> ${randomQuoteObject.quote} </p>
-      <p class="source"> ${randomQuoteObject.author}
-    `
   }
   randomQuote += `</p>`
 
