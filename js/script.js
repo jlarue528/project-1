@@ -3,12 +3,15 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
 /*** 
- * `quotes` array 
+ * Quotes @type {array}
+ * This variable holds an array that includes a list of objects that list each quote used in the random quote generator
+ * Each object has 2 standard properties:
+ * * @type {string} quote
+ * * @type {string} author
+ * Some objects have additional properties:
+ * * @type {string} citation
+ * * @type {number} year
 ***/
 
 const quotes = [
@@ -42,10 +45,11 @@ const quotes = [
 ]
 
 
-/***
-  * `getRandomQuote` function
-***/
-//should randomly select quote from the quotes array and return it
+/**
+ * getRandomQuote function randomly selects a quote from the quotes array and returns it
+ 	* @returns {object} a random quote object
+ */
+
 function getRandomQuote() {
   const randomNumber = Math.floor(Math.random() * quotes.length);
   const randomQuote = {
@@ -54,20 +58,24 @@ function getRandomQuote() {
   return randomQuote.quote;
 }
 
-
-
-// /***
-//  * `printQuote` function
-// ***/
-//call the getRandomQuote function and then print the quote to the page using the template provided in the project instructions
+/***
+  * printQuote function prints a random quote to the page
+  * @returns {string} full HTML string displaying a random quote to the page
+***/
 
 function printQuote() {
   const randomQuoteObject = getRandomQuote();
+  /** 
+    * * randomQuote variable holds the value of the HTML that will be displayed on the page
+    * * @type {string}
+  */
   let randomQuote = `
     <p class="quote"> ${randomQuoteObject.quote} </p>
     <p class="source"> ${randomQuoteObject.author}
   `;
-
+  /*
+    * if statements list additions to HTML string if the quote objects include citation or year
+  */
   if(Object.keys(randomQuoteObject).includes('citation')) {
     randomQuote += `
       <span class="citation"> ${randomQuoteObject.citation} </span>
@@ -82,8 +90,6 @@ function printQuote() {
   return document.getElementById('quote-box').innerHTML = randomQuote; 
 };
 printQuote();
-
-
 
 // /***
 //  * click event listener for the print quote button
