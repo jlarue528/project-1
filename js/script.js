@@ -8,7 +8,7 @@ project 1 - A Random Quote Generator
  * This variable holds an array that includes a list of objects that list each quote used in the random quote generator
  * Each object has 2 standard properties:
  * * @type {string} quote
- * * @type {string} author
+ * * @type {string} source
  * Some objects have additional properties:
  * * @type {string} citation
  * * @type {number} year
@@ -17,32 +17,32 @@ project 1 - A Random Quote Generator
 const quotes = [
   {
     quote: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
-    author: "James Cameron",
+    source: "James Cameron",
     citation: "The Mind of James Cameron",
     purpose: 'Motivation'
   },
   {
     quote: "Insanity: doing the same thing over and over again and expecting different results.",
-    author:  "Albert Einstein" 
+    source:  "Albert Einstein" 
   },
   {
     quote: "The greatest wealth is to live content with little." ,
-    author:  "Plato",
+    source:  "Plato",
     tag: 'Minimalist' 
   },
   {
     quote: "The future belongs to those who prepare for it today.",
-    author:  "Malcolm X",
+    source:  "Malcolm X",
     year: 1962 
   },
   {
     quote: "The successful warrior is the average man, with laser-like focus.",
-    author:  "Bruce Lee",
+    source:  "Bruce Lee",
     citation: "Motivational Phrases" 
   },
   {
     quote: "Well done is better than well said.",
-    author:  "Benjamin Franklin"
+    source:  "Benjamin Franklin"
   }
 ]
 
@@ -73,7 +73,7 @@ function printQuote() {
   */
   let randomQuote = `
     <p class= "quote"> ${randomQuoteObject.quote} </p>
-    <p class= "source"> ${randomQuoteObject.author}
+    <p class= "source"> ${randomQuoteObject.source}
   `;
   /*
     * if statements list additions to HTML string if the quote objects include citation or year
